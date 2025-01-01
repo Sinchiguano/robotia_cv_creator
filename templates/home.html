@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">ROBOTIA</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('cvcreator') }}">Create CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container mt-5">
+    <h1>Welcome to ROBOTIA</h1>
+    <p>Explore our range of wide-format printers for all your large-scale printing needs.</p>
+
+    <!-- Showcase Section with 7 Pictures -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Picture 1 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image1.jpeg') }}" class="card-img-top" alt="Printing Example 1">
+                <div class="card-body">
+                    <p class="card-text">High-quality banner printing for business promotions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 2 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image2.jpeg') }}" class="card-img-top" alt="Printing Example 2">
+                <div class="card-body">
+                    <p class="card-text">Custom prints for events and trade shows.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 3 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image3.jpeg') }}" class="card-img-top" alt="Printing Example 3">
+                <div class="card-body">
+                    <p class="card-text">Vibrant and durable prints for storefront displays.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 4 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image4.jpeg') }}" class="card-img-top" alt="Printing Example 4">
+                <div class="card-body">
+                    <p class="card-text">Creative custom artwork and wall murals.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 5 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image5.jpeg') }}" class="card-img-top" alt="Printing Example 5">
+                <div class="card-body">
+                    <p class="card-text">Large-scale prints for exhibitions and displays.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 6 -->
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image6.jpeg') }}" class="card-img-top" alt="Printing Example 6">
+                <div class="card-body">
+                    <p class="card-text">Brilliant prints for advertising and marketing materials.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture 7 (Portrait Image) -->
+        <div class="col-lg-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/image7.jpeg') }}" class="card-img-top" alt="Printing Example 7 (Portrait)">
+                <div class="card-body">
+                    <p class="card-text">Stunning vertical prints for unique branding.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

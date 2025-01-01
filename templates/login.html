@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Content Section -->
+        <div class="col-lg-6">
+            <div>
+            <h1 class="text-primary text-center">ROBOTIA</h1>
+            </div>
+            
+            <h3 class="text-primary text-center">Transform Your Ideas into Stunning Visuals!</h1>
+            <p>
+                At <strong>ROBOTIA</strong>, we bring your creative visions to life with our <strong>wide-format printing solutions</strong>. 
+                From <strong>eye-catching banners</strong> and <strong>attention-grabbing posters</strong> to <strong>custom designs</strong>, we deliver 
+                <strong>high-quality, vibrant results</strong> tailored to your needs.
+            </p>
+
+
+
+            <!-- Image inserted here -->
+            <div class="text-center mb-4">
+                <img src="{{ url_for('static', filename='images/image3.jpeg') }}" class="img-fluid" alt="Wide-format printing example">
+            </div>
+
+
+
+            <h2 class="mt-4 text-success">Why Choose ROBOTIA?</h2>
+            <ul>
+                <li><strong>State-of-the-Art Technology:</strong> Precision and vibrant colors in every project.</li>
+                <li><strong>Customizable Options:</strong> Unique sizes, shapes, or materials tailored for you.</li>
+                <li><strong>Eco-Friendly Practices:</strong> Sustainable materials for a greener planet.</li>
+                <li><strong>Versatile Applications:</strong> Perfect for branding, events, and artistic creations.</li>
+                <li><strong>Fast Turnaround:</strong> On-time delivery without compromising quality.</li>
+            </ul>
+
+            <h2 class="mt-4 text-warning">Perfect for:</h2>
+            <ul>
+                <li><strong>Business Branding:</strong> Storefront displays, trade show banners, and posters.</li>
+                <li><strong>Event Promotions:</strong> Conference signage, wedding backdrops, and party decorations.</li>
+                <li><strong>Custom Artwork:</strong> Enlarged photos, canvas prints, and wall murals.</li>
+                <li><strong>Retail Displays:</strong> In-store signage and promotional graphics.</li>
+            </ul>
+
+            <p class="mt-4">
+                💡 <strong>Let us bring your vision to life!</strong><br>
+                📍 <strong>Visit us today or contact us</strong> to learn more about our professional printing services.
+            </p>
+        </div>
+
+        <!-- Video Showcase Section -->
+        <div class="col-lg-6">
+            <h2 class="text-center text-primary">Explore Our Work</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <video controls width="100%">
+                        <source src="{{ url_for('static', filename='videos/promo1.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-md-6">
+                    <video controls width="100%">
+                        <source src="{{ url_for('static', filename='videos/promo2.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-md-6">
+                    <video controls width="100%">
+                        <source src="{{ url_for('static', filename='videos/promo3.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-md-6">
+                    <video controls width="100%">
+                        <source src="{{ url_for('static', filename='videos/promo4.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+
+
+            <!-- Image inserted here -->
+            <div class="text-center mt-4">
+                <img src="{{ url_for('static', filename='images/image2.jpeg') }}" class="img-fluid" alt="Printing process">
+            </div>
+
+    <hr class="my-5">
+
+    <!-- Login Section -->
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center text-secondary">Login to Your Account</h2>
+            <form method="POST" action="{{ url_for('login') }}" class="p-4 shadow-sm rounded border">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+
+        </div>
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+</div>
+{% endblock %}

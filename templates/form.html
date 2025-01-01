@@ -1,0 +1,187 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ROBOTIA</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('cvcreator') }}">Create CV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Create Your CV</h1>
+        <form action="/generate" method="post" enctype="multipart/form-data">
+            <!-- Personal Information -->
+            <div class="card mb-4">
+                <div class="card-header">Personal Information</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Surname</label>
+                        <input type="text" class="form-control" id="surname" name="surname" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_card" class="form-label">ID Card</label>
+                        <input type="text" class="form-control" id="id_card" name="id_card" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="marital_status" class="form-label">Marital Status</label>
+                        <select class="form-select" id="marital_status" name="marital_status" required>
+                            <option value="">Choose...</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobile_phone" class="form-label">Mobile Phone</label>
+                        <input type="tel" class="form-control" id="mobile_phone" name="mobile_phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Photo</label>
+                        <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Education Background -->
+            <div class="card mb-4">
+                <div class="card-header">Education Background</div>
+                <div class="card-body" id="education-section">
+                    <div class="education-entry mb-3">
+                        <input type="text" class="form-control mb-2" name="education[]" placeholder="Institution - Degree - City" required>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="add-education">Add Education</button>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="card mb-4">
+                <div class="card-header">Work Experience</div>
+                <div class="card-body" id="work-section">
+                    <div class="work-entry mb-3">
+                        <input type="text" class="form-control mb-2" name="work_experience[]" placeholder="Company - Position - City - Years" required>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="add-work">Add Work Experience</button>
+            </div>
+
+            <!-- References -->
+            <div class="card mb-4">
+                <div class="card-header">References</div>
+                <div class="card-body">
+                    <h5>Personal References</h5>
+                    <div class="mb-3">
+                        <input type="text" class="form-control mb-2" name="personal_ref1_name" placeholder="Full Name" required>
+                        <input type="tel" class="form-control" name="personal_ref1_phone" placeholder="Mobile Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control mb-2" name="personal_ref2_name" placeholder="Full Name" required>
+                        <input type="tel" class="form-control" name="personal_ref2_phone" placeholder="Mobile Phone" required>
+                    </div>
+
+                    <h5>Working References</h5>
+                    <div class="mb-3">
+                        <input type="text" class="form-control mb-2" name="working_ref1_name" placeholder="Full Name" required>
+                        <input type="tel" class="form-control" name="working_ref1_phone" placeholder="Mobile Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control mb-2" name="working_ref2_name" placeholder="Full Name" required>
+                        <input type="tel" class="form-control" name="working_ref2_phone" placeholder="Mobile Phone" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses -->
+            <div class="card mb-4">
+                <div class="card-header">Courses</div>
+                <div class="card-body" id="courses-section">
+                    <div class="course-entry mb-3">
+                        <input type="text" class="form-control mb-2" name="courses[]" placeholder="Course Name - City" required>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="add-course">Add Course</button>
+            </div>
+
+            <!-- Skills -->
+            <div class="card mb-4">
+                <div class="card-header">Skills</div>
+                <div class="card-body" id="skills-section">
+                    <div class="skill-entry mb-3">
+                        <input type="text" class="form-control" name="skills[]" placeholder="Skill" required>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="add-skill">Add Skill</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Generate CV</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('add-education').addEventListener('click', () => {
+            const section = document.getElementById('education-section');
+            const entry = document.createElement('div');
+            entry.classList.add('education-entry', 'mb-3');
+            entry.innerHTML = '<input type="text" class="form-control mb-2" name="education[]" placeholder="Institution - Degree - City" required>';
+            section.appendChild(entry);
+        });
+
+        document.getElementById('add-work').addEventListener('click', () => {
+            const section = document.getElementById('work-section');
+            const entry = document.createElement('div');
+            entry.classList.add('work-entry', 'mb-3');
+            entry.innerHTML = '<input type="text" class="form-control mb-2" name="work_experience[]" placeholder="Company - Position - City - Years" required>';
+            section.appendChild(entry);
+        });
+
+        document.getElementById('add-course').addEventListener('click', () => {
+            const section = document.getElementById('courses-section');
+            const entry = document.createElement('div');
+            entry.classList.add('course-entry', 'mb-3');
+            entry.innerHTML = '<input type="text" class="form-control mb-2" name="courses[]" placeholder="Course Name - City" required>';
+            section.appendChild(entry);
+        });
+
+        document.getElementById('add-skill').addEventListener('click', () => {
+            const section = document.getElementById('skills-section');
+            const entry = document.createElement('div');
+            entry.classList.add('skill-entry', 'mb-3');
+            entry.innerHTML = '<input type="text" class="form-control" name="skills[]" placeholder="Skill" required>';
+            section.appendChild(entry);
+        });
+    </script>
+
+
+{% endblock %}
+
+
